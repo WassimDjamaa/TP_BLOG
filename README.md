@@ -8,7 +8,7 @@
 - [x] Construiser un projet sur votre environnement local reprenant la même structure que ce repository. Vous devriez obtenir le résultat suivant :
 ![screenshot](docs/screencapture.png)
 - [x] Appeler votre intervenant (2 points)
-- [ ] En vous inspirant de cette structure, mettre en place un CRUD :  CREATION / RETRIEVE / UPDATE / DELETE pour les articles de blog.
+- [ x] En vous inspirant de cette structure, mettre en place un CRUD :  CREATION / RETRIEVE / UPDATE / DELETE pour les articles de blog.
 - [ ] Appeler votre intervenant (2 points)
 - [ ] En vous inspirant de cette structure, mettre en place un CRUD pour les catégories des articles de blog
 - [ ] Mettre en place un formulaire de connexion
