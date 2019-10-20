@@ -19,8 +19,18 @@ function ajouter_articles($nom, $contenu)
 function afficher_article($id)
 {
     global $db;
-    $req = $db->query("SELECT*FROM posts WHERE $id = :id");
-    $req->bindParam(':id', $id);
-    $req->execute();
-    return $req->fetchAll();
+    $sth = $db->prepare("SELECT * FROM posts WHERE id = :id");
+    $sth->bindParam(':id', $id);
+    $sth->execute();
+    return $sth->fetch();
+}
+
+function update_article($nom, $contenu, $id)
+{
+    global $db;
+    $sth = $db->prepare('UPDATE posts SET title = :title,content = :content WHERE id = :id');
+    $sth->bindParam(':id', $id);
+    $sth->bindParam(':title', $nom);
+    $sth->bindParam(':content', $contenu);
+    $sth->execute(array($nom, $contenu, $id));
 }
