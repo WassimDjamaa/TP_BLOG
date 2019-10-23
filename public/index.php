@@ -16,6 +16,10 @@ if (isset($_POST['id'])) {
 if (isset($_POST['id'])) {
     $id = $_POST['id'];
 }
+
+
+$tests = afficher_categories();
+
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +28,6 @@ if (isset($_POST['id'])) {
 <head>
     <title>Blog actualité</title>
     <link rel="stylesheet" href="../includes/bootstrap.min.css" crossorigin="anonymous">
-
 </head>
 
 <body>
@@ -35,12 +38,12 @@ if (isset($_POST['id'])) {
             <?php foreach ($posts as $post) : ?>
                 <div class="col-md-4">
                     <h2><?= $post['title']; ?></h2>
-                    <p><?= $post['content']; ?></p>
+                    <p><?= lire_suite($post['content']); ?></p>
                     <a href="http://localhost/iut-tp-blog-master/public/affichage.php?id=<?php echo $post['id'] ?>"><button>Lire la suite</button></a>
 
                     <form action="suppr.php" method="POST">
                         <input type="hidden" name="id" value="<?php echo $post['id'] ?>" />
-                        <input type="submit" value="supprimer" />
+                        <input type="submit" value="Supprimer" />
                     </form>
 
                     <form action="editer.php" method="POST">
@@ -52,8 +55,17 @@ if (isset($_POST['id'])) {
             <?php endforeach; ?>
         </div><br />
         <a href="form.php"><button>Ajouter un article</button></a>
-    </div>
 
+
+        <div id="categories">
+            <h1>Catégories</h1>
+            <?php foreach ($tests as $test) : ?> <div class="col-md-4">
+                    <h2><?= $test['titre'] ?></h2>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <a href="categories.php"><button>Ajouter un article</button></a>
+    </div>
 </body>
 
 </html>

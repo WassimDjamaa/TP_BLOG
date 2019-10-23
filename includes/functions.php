@@ -16,6 +16,7 @@ function ajouter_articles($nom, $contenu)
     $sth->execute();
 }
 
+
 function afficher_article($id)
 {
     global $db;
@@ -33,4 +34,21 @@ function update_article($nom, $contenu, $id)
     $sth->bindParam(':title', $nom);
     $sth->bindParam(':content', $contenu);
     $sth->execute(array($nom, $contenu, $id));
+}
+
+function afficher_categories()
+{
+    global $db;
+    $sth = $db->query("SELECT * FROM categories");
+    return $sth->fetchAll();
+}
+
+function lire_suite($contenu)
+{
+    $maxi = 550; // taille limite que l'on affiche dans l'index
+    $contenu = substr($contenu, 0, $maxi);
+    $espace = strrpos($contenu, " "); // teste si on lis un autre caractère
+    $contenu = substr($contenu, 0, $espace);
+    $contenu = $contenu . "...";
+    return $contenu;
 }

@@ -4,7 +4,10 @@ require_once '../includes/config.php';
 $post = afficher_article($_POST['id']);
 
 if (isset($_POST['title']) && isset($_POST['content']) && isset($_POST['id'])) {
-    $maj = update_article($nom, $contenu, $id);
+    $id = $_GET['id'];
+    $nom = $_POST['title'];
+    $contenu = $_POST['content'];
+    update_article($nom, $contenu, $id);
 }
 ?>
 
